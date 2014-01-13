@@ -2,6 +2,7 @@
 namespace Lexik\Bundle\FormFilterBundle\Filter\ORM;
 
 use Doctrine\ORM\QueryBuilder;
+use \Criteria;
 
 use Lexik\Bundle\FormFilterBundle\Filter\ORM\Expr;
 use Lexik\Bundle\FormFilterBundle\Event\GetFilterEvent;
@@ -16,7 +17,7 @@ abstract class ORMFilter implements FilterInterface
      */
     public function onFilterGet(GetFilterEvent $event)
     {
-        if ($event->getFilterBuilder() instanceof QueryBuilder && $event->getName() === $this->getName()) {
+        if (($event->getFilterBuilder() instanceof QueryBuilder) && $event->getName() === $this->getName()) {
             $event->setFilter($this);
             $event->stopPropagation();
         }

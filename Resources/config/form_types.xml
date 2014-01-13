@@ -47,6 +47,10 @@
             <tag name="form.type" alias="filter_entity" />
         </service>
 
+        <service id="lexik_form_filter.type.filter_entity_text" class="Lexik\Bundle\FormFilterBundle\Filter\Extension\Type\EntityTextFilterType">
+            <tag name="form.type" alias="filter_entity_text" />
+        </service>
+
         <service id="lexik_form_filter.type.filter_date" class="Lexik\Bundle\FormFilterBundle\Filter\Extension\Type\DateFilterType">
             <tag name="form.type" alias="filter_date" />
         </service>

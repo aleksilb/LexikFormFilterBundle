@@ -35,7 +35,7 @@ class EntityFilterType extends AbstractFilterType
      */
     public function getParent()
     {
-        return 'entity';
+        return 'choice';
     }
 
     /**

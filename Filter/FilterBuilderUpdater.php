@@ -108,7 +108,11 @@ class FilterBuilderUpdater implements FilterBuilderUpdaterInterface
                 }
 
                 if (count($parts)) {
-                    $this->addFilters($child, $filterBuilder, $parts[$join], $parts, $expr);
+                    if (isset($parts[$join])) {
+                        $this->addFilters($child, $filterBuilder, $parts[$join], $parts, $expr);
+                    } else {
+                        $this->addFilters($child, $filterBuilder, $alias, $parts, $expr);
+                    }
                 }
             } else {
                 $type = $this->getFilterType($child->getConfig(), $filterBuilder);

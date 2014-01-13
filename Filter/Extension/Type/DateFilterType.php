@@ -2,6 +2,9 @@
 
 namespace Lexik\Bundle\FormFilterBundle\Filter\Extension\Type;
 
+use Lexik\Bundle\FormFilterBundle\Filter\FilterOperands;
+
+use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 /**
@@ -11,6 +14,16 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
  */
 class DateFilterType extends AbstractFilterType
 {
+
+    public function buildForm(FormBuilderInterface $builder, array $options)
+    {
+        parent::buildForm($builder, $options);
+
+        $builder->setAttribute('filter_options', array(
+            'condition_operator' => $options['condition_operator'],
+        ));
+    }
+
     /**
      * {@inheritdoc}
      */
@@ -21,9 +34,11 @@ class DateFilterType extends AbstractFilterType
         $resolver
             ->setDefaults(array(
                 'transformer_id' => 'lexik_form_filter.transformer.default',
+                'condition_operator' => FilterOperands::OPERATOR_EQUAL
             ))
             ->setAllowedValues(array(
                 'transformer_id' => array('lexik_form_filter.transformer.default'),
+                'condition_operator' => FilterOperands::getNumberOperands(true)
             ))
         ;
     }

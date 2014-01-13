@@ -28,5 +28,6 @@ class LexikFormFilterExtension extends Extension
         $loader->load('services.xml');
         $loader->load('form_types.xml');
         $loader->load('doctrine/orm/filters.xml');
+        $loader->load('propel/filters.xml');
     }
 }
